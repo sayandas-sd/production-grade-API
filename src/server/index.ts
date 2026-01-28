@@ -1,7 +1,8 @@
-import { publicProcedure, router } from './trpc';
+import { router } from './trpc';
+import { todoRouter } from './routes/todo/todo.routes';
 
-const appRouter = router({
-  greeting: publicProcedure.query(() => 'hello tRPC v10!'),
+export const appRouter = router({
+  todos: todoRouter
 });
 
 export type AppRouter = typeof appRouter;

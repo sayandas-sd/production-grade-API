@@ -8,3 +8,9 @@ export const modelSchema = z.object({
 })
 
 export type Todo = z.infer<typeof modelSchema>
+
+
+export const getData = z.object({
+    todos: z.array(modelSchema)
+})
+
