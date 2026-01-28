@@ -3,6 +3,7 @@ import { createContext } from "./server/context";
 import { appRouter } from "./server";
 import * as trpcExpress from '@trpc/server/adapters/express';
 import { generateOpenApiDocument, createOpenApiExpressMiddleware } from 'trpc-to-openapi';
+import fs from "fs/promises";
 
 const port = 3000;
 
@@ -21,6 +22,8 @@ app.get("/", (req, res) => {
     msg: "hello guys our trpc server is running"
   })
 })
+
+fs.writeFile("openapi-specification.json", JSON.stringify(openApiDocument))
 
 
 app.get("/openapi.json", (req, res) => {
